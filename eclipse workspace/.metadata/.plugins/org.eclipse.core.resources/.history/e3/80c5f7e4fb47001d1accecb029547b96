@@ -39,7 +39,7 @@ int main(){
 			}
 			LCD_moveCursor(1, 6);
 			LCD_intgerToString(currentTemp);
-			LCD_displayString(" C ");
+			LCD_displayString(" C");
 			DcMotor_Rotate(stoped, 0);
 			lastState=currentState;
 		}else if(currentTemp<50){
@@ -52,7 +52,6 @@ int main(){
 			}
 			LCD_moveCursor(1, 6);
 			LCD_intgerToString(currentTemp);
-			LCD_displayString(" C ");
 			DcMotor_Rotate(clockwise,precent50);
 			lastState=currentState;
 		} else if(currentTemp<60){
@@ -65,7 +64,6 @@ int main(){
 			}
 			LCD_moveCursor(1, 6);
 			LCD_intgerToString(currentTemp);
-			LCD_displayString(" C ");
 			DcMotor_Rotate(clockwise,precent50);
 			lastState=currentState;
 		} else if(currentTemp<90){
@@ -78,7 +76,6 @@ int main(){
 			}
 			LCD_moveCursor(1, 6);
 			LCD_intgerToString(currentTemp);
-			LCD_displayString(" C ");
 			DcMotor_Rotate(clockwise,precent75);
 			lastState=currentState;
 		} else {
@@ -88,11 +85,9 @@ int main(){
 				LCD_clearScreen();
 				LCD_moveCursor(0, 2 );
 				LCD_displayString("fan is on 100%");
-
 			}
 			LCD_moveCursor(1, 6);
 			LCD_intgerToString(currentTemp);
-			LCD_displayString(" C ");
 			DcMotor_Rotate(clockwise,precent100);
 			lastState=currentState;
 		}
