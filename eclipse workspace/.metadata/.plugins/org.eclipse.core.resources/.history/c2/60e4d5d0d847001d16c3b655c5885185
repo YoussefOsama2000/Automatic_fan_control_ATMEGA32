@@ -1,0 +1,13 @@
+ /******************************************************************************
+ *
+ * Module: PWM
+ *
+ * File Name: pwm.h
+ *
+ * Description: Source file for pulse width modulation
+ *
+ * Author: Youssef Osama
+ *
+ *******************************************************************************/
+void PWM_init();
+void PWM_setDutyCycle();

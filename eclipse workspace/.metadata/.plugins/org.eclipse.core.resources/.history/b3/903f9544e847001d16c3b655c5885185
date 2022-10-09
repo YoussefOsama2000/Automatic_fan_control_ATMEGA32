@@ -1,0 +1,32 @@
+#include "lm35_sensor.h"
+#include "lcd.h"
+#include "adc.h"
+#include "dc_motor.h"
+int main(){
+	/*declaring needed variables*/
+	uint8 currentTemp;
+	/*
+	 * initialize ADC at frequency equal to 1/8 of CPU frequency and
+	 * with internal V reference
+	 */
+	{
+	ADC_ConfigType adc_config;
+	adc_config.ref_volt=FCPUOver_8;
+	adc_config.ref_volt=AVCC;
+	ADC_init(&adc_config);
+	}
+	/*initializing LCD*/
+	LCD_init();
+	/*initializing DC MOTOR*/
+	DcMotor_init();
+	while(1){
+	currentTemp = LM35_getTemperature();
+	if(currentTemp<30){
+		LCD_clearScreen();
+		LCD_displayString("fan is off");
+		LCD_moveCursor(2, 1);
+		LCD_intgerToString(currentTemp);
+		Dcmotor_Rotate(stop, 0);
+	}
+	}
+}

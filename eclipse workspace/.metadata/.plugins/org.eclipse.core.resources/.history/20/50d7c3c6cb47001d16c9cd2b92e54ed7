@@ -1,0 +1,7 @@
+#include "lm35_sensor.c"
+int main(){
+	ADC_ConfigType adc_config;
+	adc_Config.ref_volt=FCPUOver_8;
+	adc_Config.ref_volt=InternalVRef;
+	ADC_init(&adc_config);
+}

@@ -1,0 +1,25 @@
+#include "lm35_sensor.h"
+#include "lcd.h"
+#include "adc.h"
+#include "dc_motor.h"
+int main(){
+	/*declaring needed variables*/
+	uint8 currentTemp;
+	/*
+	 * initialize ADC at frequency equal to 1/8 of CPU frequency and
+	 * with internal V reference
+	 */
+	{
+	ADC_ConfigType adc_config;
+	adc_config.ref_volt=FCPUOver_8;
+	adc_config.ref_volt=InternalVRef;
+	ADC_init(&adc_config);
+	}
+	/*initializing LCD*/
+	LCD_init();
+	while(1){
+	currentTemp = LM35_getTemperature();
+		LCD_moveCursor(0, 0);
+		LCD_intgerToString(15);
+	}
+}

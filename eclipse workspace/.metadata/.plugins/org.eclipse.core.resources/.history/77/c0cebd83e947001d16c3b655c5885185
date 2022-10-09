@@ -1,0 +1,44 @@
+#include "lm35_sensor.h"
+#include "lcd.h"
+#include "adc.h"
+#include "dc_motor.h"
+
+typedef enum {
+	stoped=0,precent25=25,precent50=50,precent75=75,precent100=100
+}motorState;
+int main(){
+	/*declaring needed variables*/
+	uint8 currentTemp;
+	motorState lastState=stop,currentState=stop;
+	/*
+	 * initialize ADC at frequency equal to 1/8 of CPU frequency and
+	 * with internal V reference
+	 */
+	{
+		ADC_ConfigType adc_config;
+		adc_config.ref_volt=FCPUOver_8;
+		adc_config.ref_volt=AVCC;
+		ADC_init(&adc_config);
+	}
+	/*initializing LCD*/
+	LCD_init();
+	/*initializing DC MOTOR*/
+	DcMotor_init();
+	while(1){
+		currentTemp = LM35_getTemperature();
+		if(currentTemp<30){
+			currentState=stoped;
+			if(currentState!=lastState)
+			{
+				LCD_moveCursor(1, 3);
+				LCD_clearScreen();
+				LCD_displayString("fan is off");
+			}
+			LCD_moveCursor(2, 1);
+			LCD_intgerToString(currentTemp);
+			DcMotor_Rotate(stoped, 0);
+		}else if(currentTemp<50){
+
+		}
+	}
+}

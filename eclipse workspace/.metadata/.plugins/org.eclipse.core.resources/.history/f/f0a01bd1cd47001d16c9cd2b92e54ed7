@@ -1,0 +1,16 @@
+#include "lm35_sensor.c"
+#include "lcd.h"
+int main(){
+	/*
+	 * initialize ADC at frequency equal to 1/8 of CPU frequency and
+	 * with internal V reference
+	 */
+	{
+	ADC_ConfigType adc_config;
+	adc_config.ref_volt=FCPUOver_8;
+	adc_config.ref_volt=InternalVRef;
+	ADC_init(&adc_config);
+	}
+	LCD_init();
+
+}

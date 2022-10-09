@@ -1,0 +1,46 @@
+/******************************************************************************
+ *
+ * Module: GPIO
+ *
+ * File Name: gpio.h
+ *
+ * Description: Header file for the AVR GPIO driver
+ *
+ * Author: Youssef Osama
+ *
+ *******************************************************************************/
+#include "gpio.h"
+#include "avr/io.h"
+#include "common_macros.h"
+
+/*
+ * Description :
+ * Setup the direction of the required pin input/output.
+ * If the input port number or pin number are not correct, The function will not handle the request.
+ */
+void GPIO_setupPinDirection(uint8 port_num, uint8 pin_num, GPIO_PinDirectionType direction){
+	if((pin_num >= NUM_OF_PINS_PER_PORT) || (port_num >= NUM_OF_PORTS))
+	{
+		/* Do Nothing */
+	}else{
+		switch (port_num) {
+		case PORTA_ID:
+			if(direction== PIN_OUTPUT)
+				SET_BIT(DDRA,pin_num);
+			else CLEAR_BIT(DDRA,pin_num);
+			break;
+		case PORTB_ID:
+			if(direction== PIN_OUTPUT)
+				SET_BIT(DDRB,pin_num);
+			else CLEAR_BIT(DDRB,pin_num);
+			break;
+		case PORTC_ID:
+					if(direction== PIN_OUTPUT)
+						SET_BIT(DDRC,pin_num);
+					else CLEAR_BIT(DDRC,pin_num);
+					break;
+		default:
+			break;
+		}
+	}
+}

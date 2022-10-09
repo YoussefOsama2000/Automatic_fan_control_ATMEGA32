@@ -1,0 +1,58 @@
+ /******************************************************************************
+ *
+ * Module: DC MOTOR
+ *
+ * File Name: dc_motor.h
+ *
+ * Description: Header file for the DC motor driver
+ *
+ * Author: Youssef Osama
+ *
+ *******************************************************************************/
+#ifndef DC_MOTOR_H_
+#define DC_MOTOR_H_
+#include "std_types.h"
+/*******************************************************************************
+ *                                Definitions                                  *
+ *******************************************************************************/
+/*define default rotation direction*/
+#define Default_Rotation_Direction Clokewise
+#define OUT1_PORT_ID PORTB_ID
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*available rotation directions*/
+#define Clokewise  1
+#define AnticlokeWise 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif /* DC_MOTOR__H_ */
